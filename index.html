@@ -39,14 +39,25 @@ textarea.on{display:block}
 .q{padding:6px 10px;background:#21262d;border:1px solid #a855f7;color:#c9a7f0;border-radius:20px;font-size:11px;cursor:pointer;font-weight:600;margin:0;width:auto}
 .ft{text-align:center;font-size:11px;color:#484f58;margin-top:14px;padding-top:12px;border-top:1px solid #a855f7}
 .ft b{color:#a855f7}
+.admin-badge{position:fixed;top:15px;right:15px;background:linear-gradient(135deg,#ffd700,#ff8c00);color:#000;padding:8px 16px;border-radius:20px;font-size:12px;font-weight:900;box-shadow:0 0 20px rgba(255,215,0,.8);z-index:9999;display:none;animation:pulseBadge 1.5s infinite;letter-spacing:1px}
+.admin-badge.on{display:block}
+@keyframes pulseBadge{0%,100%{box-shadow:0 0 20px rgba(255,215,0,.8);transform:scale(1)}50%{box-shadow:0 0 30px rgba(255,215,0,1);transform:scale(1.05)}}
+.abox{background:linear-gradient(135deg,rgba(212,160,23,.15),rgba(247,201,72,.1));border:1.5px solid rgba(212,160,23,.5);border-radius:10px;padding:12px;margin-bottom:10px}
+.atitle{color:#f7c948;font-weight:bold;font-size:13px;margin-bottom:10px;text-align:center}
+.ain{width:100%;padding:10px;background:#05070d;color:#fff;border:1.5px solid rgba(212,160,23,.4);border-radius:8px;font-size:14px;text-align:center;margin-bottom:8px;outline:none}
+.abtn{padding:10px;font-size:13px;font-weight:bold;border:none;border-radius:8px;cursor:pointer;color:#000;background:linear-gradient(135deg,#d4a017,#f7c948);margin-bottom:6px;font-family:inherit;width:100%}
+.abtn.red{background:linear-gradient(135deg,#da3633,#f85149);color:#fff}
+.alist{background:#05070d;border:1px solid rgba(212,160,23,.3);border-radius:8px;padding:8px;margin-top:8px;font-size:11px;font-family:monospace;max-height:200px;overflow-y:auto;color:#e6edf3}
 </style>
 </head>
 <body>
 
-<div class="box">
-  <h2>📡 HOSTS FREE FIRE</h2>
+<div class="admin-badge" id="adminBadge">👑 ADMIN</div>
 
-  <div class="tabs">
+<div class="box">
+  <h2 id="title">📡 HOSTS FREE FIRE</h2>
+
+  <div class="tabs" id="tabs">
     <button class="tab on" id="tb0">🏠</button>
     <button class="tab" id="tb1">🤖</button>
     <button class="tab" id="tb2">📊</button>
@@ -95,6 +106,38 @@ textarea.on{display:block}
       <div class="sb"><div class="sn" id="st">0</div><div class="sl">Hôm nay</div></div>
     </div>
     <button class="gr" style="margin-top:14px" id="bcs">🗑️ XOÁ LỊCH SỬ</button>
+  </div>
+
+  <div class="tc" id="tc3">
+    <div class="abox">
+      <div class="atitle">👑 QUẢN LÝ KEY</div>
+      <input class="ain" id="nk" placeholder="Tên key mới...">
+      <select class="ain" id="nl">
+        <option value="5/3600">5 giây</option>
+        <option value="10/60">10 phút</option>
+        <option value="1">1 giờ</option>
+        <option value="24" selected>1 ngày</option>
+        <option value="168">7 ngày</option>
+        <option value="720">30 ngày</option>
+        <option value="0">Vĩnh viễn</option>
+      </select>
+      <button class="abtn" id="bAdd">➕ THÊM KEY</button>
+    </div>
+
+    <div class="abox">
+      <div class="atitle">🗑️ XOÁ / RESET KEY</div>
+      <input class="ain" id="tk" placeholder="Tên key...">
+      <div class="row">
+        <button class="abtn" id="bReset">🔄 RESET</button>
+        <button class="abtn red" id="bDel">🗑️ XOÁ</button>
+      </div>
+    </div>
+
+    <div class="abox">
+      <div class="atitle">📋 DANH SÁCH KEY</div>
+      <button class="abtn" id="bList">🔄 TẢI DANH SÁCH</button>
+      <div class="alist" id="alist">Bấm "Tải danh sách"</div>
+    </div>
   </div>
 
   <div class="ft">Make by <b>GP</b></div>
@@ -148,11 +191,27 @@ function isUsed(k){var u=JSON.parse(gsv('usedKeys','[]'));return u.indexOf(k)!==
 function markUsed(k){var u=JSON.parse(gsv('usedKeys','[]'));if(u.indexOf(k)===-1){u.push(k);ssv('usedKeys',JSON.stringify(u))}}
 function rmUK(k){var uk=JSON.parse(gsv('userKeys','{}'));delete uk[k];ssv('userKeys',JSON.stringify(uk))}
 
+function showAdminTab(){
+$('title').innerHTML='📡 HOSTS FF <span style="color:#ffd700">👑</span>';
+if(!$('tb3')){
+var tb=document.createElement('button');
+tb.className='tab';
+tb.id='tb3';
+tb.textContent='👑';
+tb.onclick=function(){tab(3)};
+$('tabs').appendChild(tb);
+}
+}
+
 function open(){
 if(t1){clearInterval(t1);t1=null}
 var k=$('ki').value.trim().toUpperCase();
 if(!k){m1('⚠️ Chưa nhập key','er');return}
-if(k==='GP-ADMIN'){m1('👑 Đang mở admin...','ok');setTimeout(function(){unlock(k)},300);return}
+if(k==='GP-ADMIN'){
+m1('👑 Đang mở admin...','ok');
+setTimeout(function(){unlock(k)},300);
+return;
+}
 var ak=getUserKeys();
 if(ak.indexOf(k)===-1){m1('❌ Key không hợp lệ','er');return}
 if(isUsed(k)){m1('🚫 Key đã dùng!','er');return}
@@ -165,7 +224,13 @@ function unlock(k){
 $('s1').classList.add('hide');$('s2').classList.remove('hide');
 var a=$('ha');a.value=H;a.classList.add('on');
 is('unlocks');rs();
-if(k==='GP-ADMIN'){m2('👑 ADMIN — Full quyền vĩnh viễn','ok');return}
+if(k==='GP-ADMIN'){
+m2('👑 ADMIN — Full quyền vĩnh viễn','ok');
+showAdminTab();
+var badge=$('adminBadge');
+if(badge)badge.classList.add('on');
+return;
+}
 if(t2){clearInterval(t2);t2=null}
 markUsed(k);ssv('activeKey',k);
 var lh=getLimit(k);if(lh===undefined)lh=24;
@@ -197,6 +262,8 @@ function reset(){
 if(t1){clearInterval(t1);t1=null}
 if(t2){clearInterval(t2);t2=null}
 try{localStorage.removeItem('ff_activeKey')}catch(e){}
+var badge=$('adminBadge');
+if(badge)badge.classList.remove('on');
 $('ki').value='';
 $('s1').classList.remove('hide');$('s2').classList.add('hide');
 $('ha').classList.remove('on');$('ha').value='';$('ha').style.filter='none';hid=false;
@@ -229,62 +296,67 @@ tk();t2=setInterval(tk,1000);
 }catch(e){}
 }
 
+function adminAdd(){
+var nk=$('nk').value.trim().toUpperCase();
+var nl=$('nl').value;
+if(!nk){alert('Chưa nhập tên key');return}
+var lim;
+if(nl.indexOf('/')>-1){var p=nl.split('/');lim=parseFloat(p[0])/parseFloat(p[1])}
+else{lim=parseFloat(nl)}
+if(K.indexOf(nk)===-1)K.push(nk);
+L[nk]=lim;
+var uk=JSON.parse(gsv('userKeys','{}'));uk[nk]=lim;ssv('userKeys',JSON.stringify(uk));
+alert('✅ Đã thêm key: '+nk);
+$('nk').value='';
+}
+
+function adminDel(){
+var tk=$('tk').value.trim().toUpperCase();
+if(!tk){alert('Chưa nhập tên key');return}
+if(tk==='GP-ADMIN'){alert('Không xoá được ADMIN');return}
+var uk=JSON.parse(gsv('userKeys','{}'));delete uk[tk];ssv('userKeys',JSON.stringify(uk));
+alert('🗑️ Đã xoá: '+tk);
+$('tk').value='';
+}
+
+function adminReset(){
+var tk=$('tk').value.trim().toUpperCase();
+if(!tk){alert('Chưa nhập tên key');return}
+try{
+localStorage.removeItem('ff_usedKeys');
+localStorage.removeItem('ff_activeKey');
+localStorage.removeItem('ff_end_'+tk);
+}catch(e){}
+alert('🔄 Đã reset: '+tk);
+}
+
+function adminList(){
+var box=$('alist');
+var uk=JSON.parse(gsv('userKeys','{}'));
+var html='<b>Key mặc định:</b><br>';
+for(var i=0;i<K.length;i++){
+var k=K[i];
+if(k==='GP-ADMIN')continue;
+var lm=L[k];
+html+='• '+k+' — '+(lm===0?'∞':lm+'h')+'<br>';
+}
+html+='<br><b>Key đã cấp:</b><br>';
+var has=false;
+for(var kk in uk){
+if(kk==='GP-ADMIN')continue;
+html+='• <b style="color:#f7c948">'+kk+'</b> — '+uk[kk]+'h<br>';
+has=true;
+}
+if(!has)html+='(chưa cấp)';
+box.innerHTML=html;
+}
+
 function am(t,ty){var b=$('cb'),d=document.createElement('div');d.className='cm '+(ty==='u'?'cu':'ca');d.innerHTML=t;b.appendChild(d);b.scrollTop=b.scrollHeight}
 
 function ai(q){
 var t=q.toLowerCase();
 var code=q.trim().toUpperCase();
-
-if(code==='ADMIN GP'||code==='ADMIN'){
-return '👑 <b>MENU ADMIN</b><br><br><b>Lệnh:</b><br>• <b>ADMIN ADD [key] [giờ]</b><br>• <b>ADMIN DEL [key]</b><br>• <b>ADMIN SET [key] [giờ]</b><br>• <b>ADMIN LIST</b><br>• <b>ADMIN GIFT [code] [key] [giờ]</b>';
-}
-
-if(code.indexOf('ADMIN ADD ')===0){
-var pAdd=code.split(' ');
-if(pAdd.length<4)return '❌ Dùng: <b>ADMIN ADD [key] [giờ]</b>';
-var nk=pAdd[2],nh=parseFloat(pAdd[3]);
-if(isNaN(nh))return '❌ Số giờ không hợp lệ!';
-var ukA=JSON.parse(gsv('userKeys','{}'));ukA[nk]=nh;ssv('userKeys',JSON.stringify(ukA));
-return '✅ <b>ĐÃ THÊM KEY!</b><br><br>Key: <b>'+nk+'</b><br>Hạn: <b>'+nh+' giờ</b>';
-}
-
-if(code.indexOf('ADMIN DEL ')===0){
-var pD=code.split(' ');
-if(pD.length<3)return '❌ Dùng: <b>ADMIN DEL [key]</b>';
-var dk=pD[2];
-var ukD=JSON.parse(gsv('userKeys','{}'));
-delete ukD[dk];ssv('userKeys',JSON.stringify(ukD));
-return '🗑️ <b>ĐÃ XOÁ KEY!</b><br><br>Key: <b>'+dk+'</b>';
-}
-
-if(code.indexOf('ADMIN SET ')===0){
-var pS=code.split(' ');
-if(pS.length<4)return '❌ Dùng: <b>ADMIN SET [key] [giờ]</b>';
-var sk=pS[2],sh=parseFloat(pS[3]);
-if(isNaN(sh))return '❌ Số giờ không hợp lệ!';
-var ukS=JSON.parse(gsv('userKeys','{}'));ukS[sk]=sh;ssv('userKeys',JSON.stringify(ukS));
-return '⚙️ <b>ĐÃ ĐỔI HẠN!</b><br><br>Key: <b>'+sk+'</b><br>Hạn mới: <b>'+sh+' giờ</b>';
-}
-
-if(code==='ADMIN LIST'){
-var ukL=JSON.parse(gsv('userKeys','{}'));
-var lh='<b>📋 DANH SÁCH KEY:</b><br><br>';
-for(var kk in ukL){lh+='• <b>'+kk+'</b> — '+ukL[kk]+'h<br>'}
-for(var ii=0;ii<K.length;ii++){if(ukL[K[ii]]===undefined){var lm=L[K[ii]];lh+='• <b>'+K[ii]+'</b> — '+(lm===0?'∞':lm+'h')+'<br>'}}
-return lh;
-}
-
-if(code.indexOf('ADMIN GIFT ')===0){
-var pG=code.split(' ');
-if(pG.length<5)return '❌ Dùng: <b>ADMIN GIFT [code] [key] [giờ]</b>';
-var gC=pG[2],gK=pG[3],gH=parseFloat(pG[4]);
-if(isNaN(gH))return '❌ Số giờ không hợp lệ!';
-GIFTS[gC]={key:gK,limit:gH};
-return '🎁 <b>ĐÃ TẠO CODE QUÀ!</b><br><br>Code: <b>'+gC+'</b><br>→ Key: <b>'+gK+'</b><br>→ Hạn: <b>'+gH+' giờ</b>';
-}
-
 var gr=useGift(code);if(gr!==null)return gr;
-
 if(t.indexOf('admin')>-1&&(t.indexOf('ai')>-1||t.indexOf('là ai')>-1))return '👑 Admin là <b>GP</b>.<br>📞 Zalo: <b>0947490509</b>';
 if(t.indexOf('hello')>-1||t.indexOf('helo')>-1)return '👋 <b>Hello!</b><br>Mình là GP AI.';
 if(t.indexOf('bddi')>-1)return '😊 Bddi = "bận đi" hoặc "buồn đi".';
@@ -312,6 +384,10 @@ var bz1=$('bz1');if(bz1)bz1.onclick=zalo;
 var bz2=$('bz2');if(bz2)bz2.onclick=zalo;
 var bs=$('bs');if(bs)bs.onclick=send;
 var bcs=$('bcs');if(bcs)bcs.onclick=cst;
+var bAdd=$('bAdd');if(bAdd)bAdd.onclick=adminAdd;
+var bDel=$('bDel');if(bDel)bDel.onclick=adminDel;
+var bReset=$('bReset');if(bReset)bReset.onclick=adminReset;
+var bList=$('bList');if(bList)bList.onclick=adminList;
 var tb0=$('tb0');if(tb0)tb0.onclick=function(){tab(0)};
 var tb1=$('tb1');if(tb1)tb1.onclick=function(){tab(1)};
 var tb2=$('tb2');if(tb2)tb2.onclick=function(){tab(2)};
