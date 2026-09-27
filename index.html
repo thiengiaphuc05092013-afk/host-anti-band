@@ -16,23 +16,18 @@ h2{color:#a855f7;text-align:center;margin-bottom:14px;font-size:18px}
 input,select{width:100%;padding:14px;font-size:16px;background:#05070d;color:#fff;border:1.5px solid #a855f7;border-radius:8px;text-align:center;margin-bottom:10px;outline:none;font-family:inherit}
 button{width:100%;padding:14px;font-size:15px;font-weight:bold;border:none;border-radius:8px;cursor:pointer;margin-bottom:8px;color:#fff;font-family:inherit}
 .g{background:linear-gradient(135deg,#a855f7,#ff0080)}.g:disabled{background:#21262d;color:#8b949e}
-.b{background:#1f6feb}.gr{background:#30363d}.z{background:#0068ff}
-.gold{background:linear-gradient(135deg,#ffd700,#ff8c00);color:#000}
+.b{background:#1f6feb}.gr{background:#30363d}
+.gold{background:linear-gradient(135deg,#ffd700,#ff8c00);color:#000;display:block;padding:14px;font-size:15px;font-weight:bold;border-radius:8px;text-align:center;text-decoration:none;margin-top:8px;box-sizing:border-box}
 textarea{width:100%;height:180px;padding:10px;background:#05070d;color:#7ee787;border:1.5px solid #a855f7;border-radius:8px;font-family:monospace;font-size:12px;display:none;resize:none}
 textarea.on{display:block}
 #msg,#msg2{margin-top:10px;padding:10px;text-align:center;font-size:13px;border-radius:8px;min-height:20px;font-weight:600}
 .ok{background:#238636}.er{background:#da3633}
 .hide{display:none}
 .row{display:grid;grid-template-columns:1fr 1fr;gap:6px}
-.stats{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-top:12px}
-.sb{background:#05070d;border-radius:8px;padding:12px 6px;text-align:center;border:1px solid #a855f7}
-.sn{font-size:20px;font-weight:bold;color:#a855f7;font-family:monospace}
-.sl{font-size:10px;color:#8b949e;margin-top:4px}
 .chat{height:220px;background:#05070d;border:1.5px solid #a855f7;border-radius:10px;padding:10px;overflow-y:auto;display:flex;flex-direction:column;gap:8px}
 .cm{max-width:85%;padding:8px 12px;border-radius:12px;font-size:13px;line-height:1.5}
 .ca{background:#21262d;color:#e6edf3;align-self:flex-start}
 .cu{background:#a855f7;color:#fff;align-self:flex-end}
-.ca b{color:#a855f7}
 .cir{display:flex;gap:6px;margin-top:10px}
 .cir input{flex:1;margin:0;padding:12px;font-size:14px;text-align:left}
 .cs{width:50px;background:#a855f7;border:none;color:#fff;border-radius:8px;font-size:18px;cursor:pointer;margin:0}
@@ -40,7 +35,7 @@ textarea.on{display:block}
 .q{padding:6px 10px;background:#21262d;border:1px solid #a855f7;color:#c9a7f0;border-radius:20px;font-size:11px;cursor:pointer;font-weight:600;margin:0;width:auto}
 .ft{text-align:center;font-size:11px;color:#484f58;margin-top:14px;padding-top:12px;border-top:1px solid #a855f7}
 .ft b{color:#a855f7}
-.badge{position:fixed;top:15px;right:15px;background:linear-gradient(135deg,#ffd700,#ff8c00);color:#000;padding:8px 16px;border-radius:20px;font-size:12px;font-weight:900;box-shadow:0 0 20px rgba(255,215,0,.8);z-index:9999;display:none}
+.badge{position:fixed;top:15px;right:15px;background:linear-gradient(135deg,#ffd700,#ff8c00);color:#000;padding:8px 16px;border-radius:20px;font-size:12px;font-weight:900;z-index:9999;display:none}
 .badge.on{display:block}
 .abox{background:linear-gradient(135deg,rgba(212,160,23,.15),rgba(247,201,72,.1));border:1.5px solid rgba(212,160,23,.5);border-radius:10px;padding:12px;margin-bottom:10px}
 .atitle{color:#f7c948;font-weight:bold;font-size:13px;margin-bottom:10px;text-align:center}
@@ -61,7 +56,6 @@ textarea.on{display:block}
   <div class="tabs" id="tabs">
     <button class="tab on" id="tb0">🏠</button>
     <button class="tab" id="tb1">🤖</button>
-    <button class="tab" id="tb3">📊</button>
   </div>
 
   <div class="tc on" id="tc0">
@@ -69,8 +63,7 @@ textarea.on{display:block}
       <input id="ki" placeholder="🔑 Nhập key...">
       <button class="g" id="bo">🔓 MỞ KHOÁ</button>
       <div id="msg"></div>
-      <a href="https://zufile.com/download/BEIOIB3CTJ" target="_blank" rel="noopener" class="gold" style="display:block;padding:14px;font-size:15px;font-weight:bold;border-radius:8px;text-align:center;text-decoration:none;margin-top:8px;color:#000;box-sizing:border-box;cursor:pointer">📥 TẢI FILE HOSTS</a>
-      <button class="z" id="bz" style="margin-top:8px">💬 MUA KEY - ZALO</button>
+      <a href="https://zufile.com/download/BEIOIB3CTJ" target="_blank" class="gold">📥 TẢI FILE HOSTS</a>
     </div>
     <div id="s2" class="hide">
       <textarea id="ha" readonly></textarea>
@@ -81,34 +74,22 @@ textarea.on{display:block}
         <button class="gr" id="br">🔒 KHOÁ</button>
       </div>
       <div id="msg2"></div>
-      <a href="https://zufile.com/download/BEIOIB3CTJ" target="_blank" rel="noopener" class="gold" style="display:block;padding:14px;font-size:15px;font-weight:bold;border-radius:8px;text-align:center;text-decoration:none;margin-top:8px;color:#000;box-sizing:border-box;cursor:pointer">📥 TẢI FILE HOSTS</a>
-      <button class="z" id="bz2" style="margin-top:8px">💬 LIÊN HỆ ZALO</button>
+      <a href="https://zufile.com/download/BEIOIB3CTJ" target="_blank" class="gold">📥 TẢI FILE HOSTS</a>
     </div>
   </div>
 
   <div class="tc" id="tc1">
     <div class="chat" id="cb">
-      <div class="cm ca">👋 Xin chào! Mình là <b>GP AI</b>.<br><br>Hỏi mình về:<br>• Cách cài hosts<br>• AdWay<br>• Mua key</div>
+      <div class="cm ca">👋 Xin chào! Mình là <b>GP AI</b>.<br><br>Hỏi <b>"code"</b> để nhận code quà!</div>
     </div>
     <div class="qb">
-      <button class="q" id="q0" data-q="Cách cài hosts?">📖 Cài</button>
-      <button class="q" id="q1" data-q="AdWay là gì?">📱 AdWay</button>
-      <button class="q" id="q2" data-q="Mua key ở đâu?">💰 Mua</button>
-      <button class="q" id="q3" data-q="Hello">👋</button>
+      <button class="q" id="q0" data-q="code">🎁 Lấy code</button>
+      <button class="q" id="q1" data-q="Hello">👋</button>
     </div>
     <div class="cir">
       <input id="ci" placeholder="Nhập câu hỏi...">
       <button class="cs" id="bs">➤</button>
     </div>
-  </div>
-
-  <div class="tc" id="tc3">
-    <div class="stats">
-      <div class="sb"><div class="sn" id="sv">0</div><div class="sl">Lượt vào</div></div>
-      <div class="sb"><div class="sn" id="su">0</div><div class="sl">Lượt mở</div></div>
-      <div class="sb"><div class="sn" id="st">0</div><div class="sl">Hôm nay</div></div>
-    </div>
-    <button class="gr" style="margin-top:14px" id="bcs">🗑️ XOÁ LỊCH SỬ</button>
   </div>
 
   <div class="tc" id="tc2">
@@ -127,14 +108,27 @@ textarea.on{display:block}
         <option value="168">7 ngày</option>
         <option value="720">30 ngày</option>
         <option value="0">Vĩnh viễn</option>
+        <option value="custom">✏️ Tùy chỉnh</option>
       </select>
+      <input class="ain" id="nCustom" placeholder="VD: 2h / 3 ngày / 90" style="display:none">
       <button class="abtn" id="bAdd">➕ THÊM KEY</button>
     </div>
 
     <div class="abox">
       <div class="atitle">🎁 TẠO CODE QUÀ</div>
       <input class="ain" id="gc" placeholder="Code...">
-      <input class="ain" id="gk" placeholder="Key...">
+      <input class="ain" id="gk" placeholder="Key trao...">
+      <select class="ain" id="gt">
+        <option value="5/3600">5 giây</option>
+        <option value="10/60">10 phút</option>
+        <option value="1">1 giờ</option>
+        <option value="24" selected>1 ngày</option>
+        <option value="168">7 ngày</option>
+        <option value="720">30 ngày</option>
+        <option value="0">Vĩnh viễn</option>
+        <option value="custom">✏️ Tùy chỉnh</option>
+      </select>
+      <input class="ain" id="gCustom" placeholder="VD: 2h / 3 ngày / 90" style="display:none">
       <button class="abtn" id="bGift">🎁 TẠO CODE</button>
     </div>
 
@@ -160,7 +154,6 @@ textarea.on{display:block}
 </div>
 
 <script>
-var ZP='0947490509';
 var H='com.dts.freefiremax\ncom.dts.freefireth\ngamesecurity.us.freefiremobile.com\ngarena.co.id\ngin.freefireind.in\ngin.freefiremobile.com\nhotro.ff.garena.vn\nna-gin.freefiremobile.com';
 var K=['GP_VIP','GP','GP-ADMIN','GP-1day','GP-10m','GP-15s','GP-30DAY'];
 var L={'GP_VIP':24,'GP':0,'GP-ADMIN':0,'GP-1day':24,'GP-10m':10/60,'GP-15s':15/3600,'GP-30DAY':720};
@@ -173,23 +166,14 @@ function gs(k,d){try{var v=localStorage.getItem('ff_'+k);return v?parseInt(v,10)
 function ss(k,v){try{localStorage.setItem('ff_'+k,String(v))}catch(e){}}
 function gsv(k,d){try{var v=localStorage.getItem('ff_'+k);return v!==null?v:(d||'')}catch(e){return d||''}}
 function ssv(k,v){try{localStorage.setItem('ff_'+k,String(v))}catch(e){}}
-function is(k){var v=gs(k,0)+1;ss(k,v);return v}
 function td(){var d=new Date();return d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate()}
-function cnd(){if(gs('ld','')!==td()){ss('ld',td());ss('today',0)}}
-function rs(){$('sv').textContent=gs('visits',0);$('su').textContent=gs('unlocks',0);$('st').textContent=gs('today',0)}
-function cst(){try{localStorage.removeItem('ff_visits');localStorage.removeItem('ff_unlocks');localStorage.removeItem('ff_today');localStorage.removeItem('ff_ld');rs()}catch(e){}}
-
-cnd();is('visits');is('today');
 
 function tab(n){
 var ts=document.querySelectorAll('.tab'),cs=document.querySelectorAll('.tc');
 for(var i=0;i<ts.length;i++){ts[i].classList.remove('on');cs[i].classList.remove('on')}
 ts[n].classList.add('on');cs[n].classList.add('on');
-if(n===2)rs();
 if(n===1)setTimeout(function(){var b=$('cb');if(b)b.scrollTop=b.scrollHeight},100);
 }
-
-function zalo(){var u='https://zalo.me/'+ZP;try{window.open(u,'_blank')}catch(e){window.location.href=u}}
 
 function getUserKeys(){
 var uk=JSON.parse(gsv('userKeys','{}'));
@@ -207,18 +191,22 @@ if(k==='GP-ADMIN')return 'admin';
 var kt=JSON.parse(gsv('keyTypes','{}'));
 return kt[k]||'user';
 }
-function isUsed(k){
-var u=JSON.parse(gsv('usedKeys','[]'));
-return u.indexOf(k)!==-1;
-}
-function markUsed(k){
-var u=JSON.parse(gsv('usedKeys','[]'));
-if(u.indexOf(k)===-1){u.push(k);ssv('usedKeys',JSON.stringify(u))}
-}
-function rmUK(k){
-var uk=JSON.parse(gsv('userKeys','{}'));
-delete uk[k];
-ssv('userKeys',JSON.stringify(uk));
+function isUsed(k){var u=JSON.parse(gsv('usedKeys','[]'));return u.indexOf(k)!==-1}
+function markUsed(k){var u=JSON.parse(gsv('usedKeys','[]'));if(u.indexOf(k)===-1){u.push(k);ssv('usedKeys',JSON.stringify(u))}}
+function rmUK(k){var uk=JSON.parse(gsv('userKeys','{}'));delete uk[k];ssv('userKeys',JSON.stringify(uk))}
+
+function parseTime(str){
+var c=(str||'').trim().toLowerCase();
+if(!c)return null;
+var m=c.match(/^([\d.]+)\s*(s|giây|m|phút|h|giờ|d|ngày)?$/);
+if(!m)return null;
+var num=parseFloat(m[1]);
+var unit=m[2]||'h';
+if(unit==='s'||unit==='giây')return num/3600;
+if(unit==='m'||unit==='phút')return num/60;
+if(unit==='h'||unit==='giờ')return num;
+if(unit==='d'||unit==='ngày')return num*24;
+return num;
 }
 
 function showAdminTab(){
@@ -228,7 +216,7 @@ var tb=document.createElement('button');
 tb.className='tab';
 tb.id='tb2';
 tb.textContent='👑';
-tb.onclick=function(){tab(3)};
+tb.onclick=function(){tab(2)};
 $('tabs').appendChild(tb);
 }
 var b=$('badge');if(b)b.classList.add('on');
@@ -238,19 +226,15 @@ function open(){
 if(t1){clearInterval(t1);t1=null}
 var k=$('ki').value.trim().toUpperCase();
 if(!k){m1('⚠️ Chưa nhập key','er');return}
-
 var ak=getUserKeys();
 if(ak.indexOf(k)===-1){m1('❌ Key không hợp lệ','er');return}
-
 var ktype=getKeyType(k);
-
 if(ktype==='admin'){
 m1('👑 Đang mở admin...','ok');
 showAdminTab();
 setTimeout(function(){unlock(k,ktype)},200);
 return;
 }
-
 if(isUsed(k)){m1('🚫 Key đã dùng!','er');return}
 m1('⏳ Đang mở khoá...','');
 $('bo').disabled=true;
@@ -267,13 +251,7 @@ function unlock(k,ktype){
 $('s1').classList.add('hide');
 $('s2').classList.remove('hide');
 var a=$('ha');a.value=H;a.classList.add('on');
-is('unlocks');
-
-if(ktype==='admin'){
-m2('👑 ADMIN KEY — Vĩnh viễn','ok');
-return;
-}
-
+if(ktype==='admin'){m2('👑 ADMIN KEY — Vĩnh viễn','ok');return}
 if(t2){clearInterval(t2);t2=null}
 markUsed(k);
 ssv('activeKey',k);
@@ -347,10 +325,7 @@ if(t2){clearInterval(t2);t2=null}
 try{localStorage.removeItem('ff_activeKey')}catch(e){}
 var b=$('badge');if(b)b.classList.remove('on');
 var tb=$('tb2');
-if(tb){
-tab(0);
-tb.remove();
-}
+if(tb){tab(0);tb.remove()}
 $('title').innerHTML='📡 HOSTS FREE FIRE';
 $('ki').value='';
 $('s1').classList.remove('hide');
@@ -370,8 +345,13 @@ var nl=$('nl').value;
 var nt=$('nt').value;
 if(!nk){alert('Chưa nhập key');return}
 var lim;
+if(nl==='custom'){
+lim=parseTime($('nCustom').value);
+if(lim===null||isNaN(lim)){alert('Sai định dạng!\nVD: 2h / 30m / 3d / 60');return}
+}else{
 if(nl.indexOf('/')>-1){var p=nl.split('/');lim=parseFloat(p[0])/parseFloat(p[1])}
 else{lim=parseFloat(nl)}
+}
 if(K.indexOf(nk)===-1)K.push(nk);
 L[nk]=lim;
 var uk=JSON.parse(gsv('userKeys','{}'));
@@ -380,8 +360,8 @@ ssv('userKeys',JSON.stringify(uk));
 var kt=JSON.parse(gsv('keyTypes','{}'));
 kt[nk]=nt;
 ssv('keyTypes',JSON.stringify(kt));
-alert('✅ Đã thêm: '+nk);
-$('nk').value='';
+alert('✅ Đã thêm: '+nk+' ('+lim+'h)');
+$('nk').value='';$('nCustom').value='';
 }
 
 function adminDel(){
@@ -401,40 +381,46 @@ $('tk').value='';
 function adminGift(){
 var gc=$('gc').value.trim().toUpperCase();
 var gk=$('gk').value.trim().toUpperCase();
+var gt=$('gt').value;
 if(!gc){alert('Chưa nhập code');return}
-if(!gk){alert('Chưa nhập key');return}
+if(!gk){alert('Chưa nhập key trao');return}
+var lim;
+if(gt==='custom'){
+lim=parseTime($('gCustom').value);
+if(lim===null||isNaN(lim)){alert('Sai định dạng!\nVD: 2h / 30m / 3d / 60');return}
+}else{
+if(gt.indexOf('/')>-1){var p=gt.split('/');lim=parseFloat(p[0])/parseFloat(p[1])}
+else{lim=parseFloat(gt)}
+}
 var cg=JSON.parse(gsv('customGifts','{}'));
-cg[gc]={key:gk,limit:24};
+cg[gc]={key:gk,limit:lim};
 ssv('customGifts',JSON.stringify(cg));
 if(K.indexOf(gk)===-1)K.push(gk);
-L[gk]=24;
+L[gk]=lim;
 var uk=JSON.parse(gsv('userKeys','{}'));
-uk[gk]=24;
+uk[gk]=lim;
 ssv('userKeys',JSON.stringify(uk));
-alert('🎁 Đã tạo code!\nCode: '+gc+'\nKey: '+gk);
-$('gc').value='';$('gk').value='';
+alert('🎁 Đã tạo code!\nCode: '+gc+'\n→ Key: '+gk+'\nHạn: '+lim+'h');
+$('gc').value='';$('gk').value='';$('gCustom').value='';
 }
 
 function adminList(){
 var box=$('alist');
 var cg=JSON.parse(gsv('customGifts','{}'));
 var ktAll=JSON.parse(gsv('keyTypes','{}'));
-var html='<b>Key đã cấp:</b><br>';
+var html='<b>Key:</b><br>';
 var uk=JSON.parse(gsv('userKeys','{}'));
 var has=false;
 for(var kk in uk){
 if(kk==='GP-ADMIN')continue;
 var tag=(ktAll[kk]==='admin')?'👑':'🔑';
-html+='• '+tag+' <b style="color:#f7c948">'+kk+'</b><br>';
+html+='• '+tag+' '+kk+'<br>';
 has=true;
 }
 if(!has)html+='(chưa cấp)';
 html+='<br><b>Code:</b><br>';
 has=false;
-for(var c in cg){
-html+='• <b style="color:#7ee787">'+c+'</b> → '+cg[c].key+'<br>';
-has=true;
-}
+for(var c in cg){html+='• '+c+' → '+cg[c].key+' ('+cg[c].limit+'h)<br>';has=true}
 if(!has)html+='(chưa tạo)';
 box.innerHTML=html;
 }
@@ -459,17 +445,50 @@ d.innerHTML=t;
 b.appendChild(d);
 b.scrollTop=b.scrollHeight;
 }
+
+function getRandomCode(){
+var cg=JSON.parse(gsv('customGifts','{}'));
+var keys=Object.keys(cg);
+if(keys.length===0)return null;
+var used=JSON.parse(gsv('usedGifts','[]'));
+var avail=keys.filter(function(c){return used.indexOf(c)===-1});
+if(avail.length===0)return null;
+return avail[Math.floor(Math.random()*avail.length)];
+}
+
+function useGift(code){
+var cg=JSON.parse(gsv('customGifts','{}'));
+var g=cg[code];
+if(!g)return null;
+var u=JSON.parse(gsv('usedGifts','[]'));
+if(u.indexOf(code)!==-1)return '❌ Code đã dùng!';
+u.push(code);ssv('usedGifts',JSON.stringify(u));
+var uk=JSON.parse(gsv('userKeys','{}'));
+uk[g.key]=g.limit;
+ssv('userKeys',JSON.stringify(uk));
+$('s1').classList.add('hide');
+$('s2').classList.remove('hide');
+var a=$('ha');a.value=H;a.classList.add('on');
+tab(0);
+return '🎁 <b>ĐÃ KÍCH HOẠT!</b><br><br>Hosts đã mở ở trang chủ!';
+}
+
 function ai(q){
 var t=q.toLowerCase();
+var code=q.trim().toUpperCase();
+var gr=useGift(code);
+if(gr!==null)return gr;
+if(t==='code'||t.indexOf('lấy code')>-1||t.indexOf('xin code')>-1||t.indexOf('cho code')>-1){
+var rc=getRandomCode();
+if(!rc)return '❌ Hết code rồi!';
+return '🎁 <b>CODE CỦA BẠN:</b><br><br><span style="color:#7ee787;font-size:20px;font-weight:900">'+rc+'</span><br><br>📝 Copy code trên → gửi lại vào ô chat này!';
+}
 if(t.indexOf('hello')>-1||t.indexOf('helo')>-1)return '👋 Hello!';
 if(t.indexOf('chào')>-1||t.indexOf('hi')>-1)return '👋 Chào bạn!';
 if(t.indexOf('cảm ơn')>-1)return '😊 Không có gì!';
-if(t.indexOf('mua')>-1||t.indexOf('key')>-1)return '💰 Zalo: <b>0947490509</b>';
-if(t.indexOf('cài')>-1||t.indexOf('cách')>-1)return '📖 AdWay → Phần đã bị chặn → Dấu cộng (+) → Thêm từng host → Thêm → Thay đổi';
-if(t.indexOf('adway')>-1)return '📱 AdWay — chặn quảng cáo không cần root.';
-if(t.indexOf('tải')>-1||t.indexOf('file')>-1)return '📥 Bấm nút <b>TẢI FILE HOSTS</b> ở trang chủ!';
-return '🤔 Chưa hiểu.';
+return '🤔 Chưa hiểu. Hỏi <b>"code"</b> để nhận code quà!';
 }
+
 function send(){
 var i=$('ci'),q=i.value.trim();
 if(!q)return;
@@ -487,26 +506,23 @@ var bc=$('bc');if(bc)bc.onclick=cp;
 var bd=$('bd');if(bd)bd.onclick=dl;
 var bh=$('bh');if(bh)bh.onclick=hide;
 var br=$('br');if(br)br.onclick=reset;
-var bz=$('bz');if(bz)bz.onclick=zalo;
-var bz2=$('bz2');if(bz2)bz2.onclick=zalo;
 var bs=$('bs');if(bs)bs.onclick=send;
+var nlSel=$('nl');if(nlSel)nlSel.onchange=function(){var c=$('nCustom');if(c)c.style.display=(this.value==='custom')?'block':'none'};
+var gtSel=$('gt');if(gtSel)gtSel.onchange=function(){var c=$('gCustom');if(c)c.style.display=(this.value==='custom')?'block':'none'};
 var bAdd=$('bAdd');if(bAdd)bAdd.onclick=adminAdd;
 var bDel=$('bDel');if(bDel)bDel.onclick=adminDel;
 var bGift=$('bGift');if(bGift)bGift.onclick=adminGift;
 var bList=$('bList');if(bList)bList.onclick=adminList;
 var bWipe=$('bWipe');if(bWipe)bWipe.onclick=adminWipe;
-var bcs=$('bcs');if(bcs)bcs.onclick=cst;
 var tb0=$('tb0');if(tb0)tb0.onclick=function(){tab(0)};
 var tb1=$('tb1');if(tb1)tb1.onclick=function(){tab(1)};
-var tb3=$('tb3');if(tb3)tb3.onclick=function(){tab(2)};
-for(var i=0;i<4;i++){var q=$('q'+i);if(q){(function(btn){var qq=btn.getAttribute('data-q');btn.onclick=function(){quick(qq)}})(q)}}
+for(var i=0;i<2;i++){var q=$('q'+i);if(q){(function(btn){var qq=btn.getAttribute('data-q');btn.onclick=function(){quick(qq)}})(q)}}
 var ki=$('ki');if(ki)ki.onkeydown=function(e){if(e.key==='Enter')open()};
 var ci=$('ci');if(ci)ci.onkeydown=function(e){if(e.key==='Enter')send()};
 }
 
 bind();
-rs();
 </script>
 
 </body>
-  </html>
+</html>
