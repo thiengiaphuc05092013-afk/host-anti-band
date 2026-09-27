@@ -17,6 +17,7 @@ input,select{width:100%;padding:14px;font-size:16px;background:#05070d;color:#ff
 button{width:100%;padding:14px;font-size:15px;font-weight:bold;border:none;border-radius:8px;cursor:pointer;margin-bottom:8px;color:#fff;font-family:inherit}
 .g{background:linear-gradient(135deg,#a855f7,#ff0080)}.g:disabled{background:#21262d;color:#8b949e}
 .b{background:#1f6feb}.gr{background:#30363d}.z{background:#0068ff}
+.gold{background:linear-gradient(135deg,#ffd700,#ff8c00);color:#000}
 textarea{width:100%;height:180px;padding:10px;background:#05070d;color:#7ee787;border:1.5px solid #a855f7;border-radius:8px;font-family:monospace;font-size:12px;display:none;resize:none}
 textarea.on{display:block}
 #msg,#msg2{margin-top:10px;padding:10px;text-align:center;font-size:13px;border-radius:8px;min-height:20px;font-weight:600}
@@ -68,7 +69,8 @@ textarea.on{display:block}
       <input id="ki" placeholder="🔑 Nhập key...">
       <button class="g" id="bo">🔓 MỞ KHOÁ</button>
       <div id="msg"></div>
-      <button class="z" id="bz">💬 MUA KEY - ZALO</button>
+      <a href="https://zufile.com/download/BEIOIB3CTJ" target="_blank" rel="noopener" class="gold" style="display:block;padding:14px;font-size:15px;font-weight:bold;border-radius:8px;text-align:center;text-decoration:none;margin-top:8px;color:#000;box-sizing:border-box;cursor:pointer">📥 TẢI FILE HOSTS</a>
+      <button class="z" id="bz" style="margin-top:8px">💬 MUA KEY - ZALO</button>
     </div>
     <div id="s2" class="hide">
       <textarea id="ha" readonly></textarea>
@@ -79,6 +81,8 @@ textarea.on{display:block}
         <button class="gr" id="br">🔒 KHOÁ</button>
       </div>
       <div id="msg2"></div>
+      <a href="https://zufile.com/download/BEIOIB3CTJ" target="_blank" rel="noopener" class="gold" style="display:block;padding:14px;font-size:15px;font-weight:bold;border-radius:8px;text-align:center;text-decoration:none;margin-top:8px;color:#000;box-sizing:border-box;cursor:pointer">📥 TẢI FILE HOSTS</a>
+      <button class="z" id="bz2" style="margin-top:8px">💬 LIÊN HỆ ZALO</button>
     </div>
   </div>
 
@@ -112,8 +116,8 @@ textarea.on{display:block}
       <div class="atitle">➕ THÊM KEY</div>
       <input class="ain" id="nk" placeholder="Tên key...">
       <select class="ain" id="nt">
-        <option value="user" selected>🔑 KEY THƯỜNG (1 lần)</option>
-        <option value="admin">👑 KEY ADMIN (nhiều lần)</option>
+        <option value="user" selected>🔑 KEY THƯỜNG</option>
+        <option value="admin">👑 KEY ADMIN</option>
       </select>
       <select class="ain" id="nl">
         <option value="5/3600">5 giây</option>
@@ -131,14 +135,6 @@ textarea.on{display:block}
       <div class="atitle">🎁 TẠO CODE QUÀ</div>
       <input class="ain" id="gc" placeholder="Code...">
       <input class="ain" id="gk" placeholder="Key...">
-      <select class="ain" id="gl">
-        <option value="5/3600">5 giây</option>
-        <option value="10/60">10 phút</option>
-        <option value="1">1 giờ</option>
-        <option value="24" selected>1 ngày</option>
-        <option value="168">7 ngày</option>
-        <option value="720">30 ngày</option>
-      </select>
       <button class="abtn" id="bGift">🎁 TẠO CODE</button>
     </div>
 
@@ -168,7 +164,6 @@ var ZP='0947490509';
 var H='com.dts.freefiremax\ncom.dts.freefireth\ngamesecurity.us.freefiremobile.com\ngarena.co.id\ngin.freefireind.in\ngin.freefiremobile.com\nhotro.ff.garena.vn\nna-gin.freefiremobile.com';
 var K=['GP_VIP','GP','GP-ADMIN','GP-1day','GP-10m','GP-15s','GP-30DAY'];
 var L={'GP_VIP':24,'GP':0,'GP-ADMIN':0,'GP-1day':24,'GP-10m':10/60,'GP-15s':15/3600,'GP-30DAY':720};
-
 var hid=false,t1=null,t2=null;
 
 function $(i){return document.getElementById(i)}
@@ -178,7 +173,6 @@ function gs(k,d){try{var v=localStorage.getItem('ff_'+k);return v?parseInt(v,10)
 function ss(k,v){try{localStorage.setItem('ff_'+k,String(v))}catch(e){}}
 function gsv(k,d){try{var v=localStorage.getItem('ff_'+k);return v!==null?v:(d||'')}catch(e){return d||''}}
 function ssv(k,v){try{localStorage.setItem('ff_'+k,String(v))}catch(e){}}
-
 function is(k){var v=gs(k,0)+1;ss(k,v);return v}
 function td(){var d=new Date();return d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate()}
 function cnd(){if(gs('ld','')!==td()){ss('ld',td());ss('today',0)}}
@@ -186,6 +180,16 @@ function rs(){$('sv').textContent=gs('visits',0);$('su').textContent=gs('unlocks
 function cst(){try{localStorage.removeItem('ff_visits');localStorage.removeItem('ff_unlocks');localStorage.removeItem('ff_today');localStorage.removeItem('ff_ld');rs()}catch(e){}}
 
 cnd();is('visits');is('today');
+
+function tab(n){
+var ts=document.querySelectorAll('.tab'),cs=document.querySelectorAll('.tc');
+for(var i=0;i<ts.length;i++){ts[i].classList.remove('on');cs[i].classList.remove('on')}
+ts[n].classList.add('on');cs[n].classList.add('on');
+if(n===2)rs();
+if(n===1)setTimeout(function(){var b=$('cb');if(b)b.scrollTop=b.scrollHeight},100);
+}
+
+function zalo(){var u='https://zalo.me/'+ZP;try{window.open(u,'_blank')}catch(e){window.location.href=u}}
 
 function getUserKeys(){
 var uk=JSON.parse(gsv('userKeys','{}'));
@@ -217,29 +221,6 @@ delete uk[k];
 ssv('userKeys',JSON.stringify(uk));
 }
 
-function tab(n){
-var ts=document.querySelectorAll('.tab'),cs=document.querySelectorAll('.tc');
-for(var i=0;i<ts.length;i++){ts[i].classList.remove('on');cs[i].classList.remove('on')}
-ts[n].classList.add('on');cs[n].classList.add('on');
-if(n===2)rs();
-if(n===1)setTimeout(function(){var b=$('cb');if(b)b.scrollTop=b.scrollHeight},100);
-}
-
-function zalo(){var u='https://zalo.me/'+ZP;try{window.open(u,'_blank')}catch(e){window.location.href=u}}
-
-function useGift(code){
-var cg=JSON.parse(gsv('customGifts','{}'));
-var g=cg[code];
-if(!g)return null;
-var u=JSON.parse(gsv('usedGifts','[]'));
-if(u.indexOf(code)!==-1)return '❌ Code đã dùng!';
-u.push(code);ssv('usedGifts',JSON.stringify(u));
-var uk=JSON.parse(gsv('userKeys','{}'));
-uk[g.key]=g.limit;
-ssv('userKeys',JSON.stringify(uk));
-return '🎁 <b>ĐÃ NHẬN KEY!</b><br><br>Key: <span style="color:#7ee787;font-size:18px;font-weight:900">'+g.key+'</span>';
-}
-
 function showAdminTab(){
 $('title').innerHTML='📡 HOSTS FF <span style="color:#ffd700">👑</span>';
 if(!$('tb2')){
@@ -263,7 +244,6 @@ if(ak.indexOf(k)===-1){m1('❌ Key không hợp lệ','er');return}
 
 var ktype=getKeyType(k);
 
-/* 👑 ADMIN: MỞ NGAY, KHÔNG CHỜ, FULL QUYỀN */
 if(ktype==='admin'){
 m1('👑 Đang mở admin...','ok');
 showAdminTab();
@@ -271,7 +251,6 @@ setTimeout(function(){unlock(k,ktype)},200);
 return;
 }
 
-/* KEY THƯỜNG: chờ 5s */
 if(isUsed(k)){m1('🚫 Key đã dùng!','er');return}
 m1('⏳ Đang mở khoá...','');
 $('bo').disabled=true;
@@ -336,8 +315,7 @@ navigator.clipboard.writeText(t).then(function(){m2('✅ Đã copy!','ok')}).cat
 }else{fb(a)}
 }
 function fb(a){
-try{
-a.focus();a.select();a.setSelectionRange(0,a.value.length);
+try{a.focus();a.select();a.setSelectionRange(0,a.value.length);
 if(document.execCommand('copy'))m2('✅ Đã copy!','ok');
 else m2('👉 Nhấn giữ → Copy','er');
 }catch(e){m2('👉 Nhấn giữ → Copy','er')}
@@ -402,8 +380,7 @@ ssv('userKeys',JSON.stringify(uk));
 var kt=JSON.parse(gsv('keyTypes','{}'));
 kt[nk]=nt;
 ssv('keyTypes',JSON.stringify(kt));
-var typeText=(nt==='admin')?'👑 KEY ADMIN':'🔑 KEY THƯỜNG';
-alert('✅ Đã thêm!\nLoại: '+typeText+'\nKey: '+nk);
+alert('✅ Đã thêm: '+nk);
 $('nk').value='';
 }
 
@@ -424,19 +401,15 @@ $('tk').value='';
 function adminGift(){
 var gc=$('gc').value.trim().toUpperCase();
 var gk=$('gk').value.trim().toUpperCase();
-var gl=$('gl').value;
 if(!gc){alert('Chưa nhập code');return}
 if(!gk){alert('Chưa nhập key');return}
-var lim;
-if(gl.indexOf('/')>-1){var p=gl.split('/');lim=parseFloat(p[0])/parseFloat(p[1])}
-else{lim=parseFloat(gl)}
 var cg=JSON.parse(gsv('customGifts','{}'));
-cg[gc]={key:gk,limit:lim};
+cg[gc]={key:gk,limit:24};
 ssv('customGifts',JSON.stringify(cg));
 if(K.indexOf(gk)===-1)K.push(gk);
-L[gk]=lim;
+L[gk]=24;
 var uk=JSON.parse(gsv('userKeys','{}'));
-uk[gk]=lim;
+uk[gk]=24;
 ssv('userKeys',JSON.stringify(uk));
 alert('🎁 Đã tạo code!\nCode: '+gc+'\nKey: '+gk);
 $('gc').value='';$('gk').value='';
@@ -445,7 +418,6 @@ $('gc').value='';$('gk').value='';
 function adminList(){
 var box=$('alist');
 var cg=JSON.parse(gsv('customGifts','{}'));
-var ug=JSON.parse(gsv('usedGifts','[]'));
 var ktAll=JSON.parse(gsv('keyTypes','{}'));
 var html='<b>Key đã cấp:</b><br>';
 var uk=JSON.parse(gsv('userKeys','{}'));
@@ -453,11 +425,11 @@ var has=false;
 for(var kk in uk){
 if(kk==='GP-ADMIN')continue;
 var tag=(ktAll[kk]==='admin')?'👑':'🔑';
-html+='• '+tag+' <b style="color:#f7c948">'+kk+'</b> — '+uk[kk]+'h<br>';
+html+='• '+tag+' <b style="color:#f7c948">'+kk+'</b><br>';
 has=true;
 }
 if(!has)html+='(chưa cấp)';
-html+='<br><b>Code đã tạo:</b><br>';
+html+='<br><b>Code:</b><br>';
 has=false;
 for(var c in cg){
 html+='• <b style="color:#7ee787">'+c+'</b> → '+cg[c].key+'<br>';
@@ -476,7 +448,7 @@ localStorage.removeItem('ff_usedKeys');
 localStorage.removeItem('ff_usedGifts');
 localStorage.removeItem('ff_customGifts');
 localStorage.removeItem('ff_keyTypes');
-alert('🗑️ Đã xoá toàn bộ!');
+alert('🗑️ Đã xoá!');
 }catch(e){}
 }
 
@@ -487,29 +459,23 @@ d.innerHTML=t;
 b.appendChild(d);
 b.scrollTop=b.scrollHeight;
 }
-
 function ai(q){
 var t=q.toLowerCase();
-var code=q.trim().toUpperCase();
-var gr=useGift(code);
-if(gr!==null)return gr;
 if(t.indexOf('hello')>-1||t.indexOf('helo')>-1)return '👋 Hello!';
 if(t.indexOf('chào')>-1||t.indexOf('hi')>-1)return '👋 Chào bạn!';
 if(t.indexOf('cảm ơn')>-1)return '😊 Không có gì!';
 if(t.indexOf('mua')>-1||t.indexOf('key')>-1)return '💰 Zalo: <b>0947490509</b>';
 if(t.indexOf('cài')>-1||t.indexOf('cách')>-1)return '📖 AdWay → Phần đã bị chặn → Dấu cộng (+) → Thêm từng host → Thêm → Thay đổi';
 if(t.indexOf('adway')>-1)return '📱 AdWay — chặn quảng cáo không cần root.';
-if(t.indexOf('lag')>-1)return '🐌 Tắt VPN khác, xoá cache FF.';
+if(t.indexOf('tải')>-1||t.indexOf('file')>-1)return '📥 Bấm nút <b>TẢI FILE HOSTS</b> ở trang chủ!';
 return '🤔 Chưa hiểu.';
 }
-
 function send(){
 var i=$('ci'),q=i.value.trim();
 if(!q)return;
 am(q,'u');i.value='';
 setTimeout(function(){am(ai(q),'a')},400);
 }
-
 function quick(q){
 am(q,'u');
 setTimeout(function(){am(ai(q),'a')},400);
@@ -522,6 +488,7 @@ var bd=$('bd');if(bd)bd.onclick=dl;
 var bh=$('bh');if(bh)bh.onclick=hide;
 var br=$('br');if(br)br.onclick=reset;
 var bz=$('bz');if(bz)bz.onclick=zalo;
+var bz2=$('bz2');if(bz2)bz2.onclick=zalo;
 var bs=$('bs');if(bs)bs.onclick=send;
 var bAdd=$('bAdd');if(bAdd)bAdd.onclick=adminAdd;
 var bDel=$('bDel');if(bDel)bDel.onclick=adminDel;
@@ -542,4 +509,4 @@ rs();
 </script>
 
 </body>
-</html>
+  </html>
